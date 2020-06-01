@@ -1,12 +1,41 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "jsx": "react-native",
-    "lib": ["dom", "esnext"],
+    "baseUrl": "./src",
+    "downlevelIteration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": false,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "module": "esnext",
     "moduleResolution": "node",
-    "noEmit": true,
-    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "outDir": "./devDist/",
+    "paths": {
+      "~/*": [
+        "*"
+      ]
+    },
+    "removeComments": true,
     "resolveJsonModule": true,
-    "strict": true
-  }
+    "strictNullChecks": false,
+    "sourceMap": true,
+    "strict": true,
+    "target": "es5",
+    "jsx": "react"
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "src",
+    "types.d.ts"
+  ]
 }

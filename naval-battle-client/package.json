@@ -1,25 +1,88 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
-  "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "eject": "expo eject"
+  "author": "Bogdan Nechyporenko",
+  "description": "Naval battle",
+  "name": "naval-battle",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:acierto/naval-battle.git"
   },
+  "main": "dist/index.js",
   "dependencies": {
-    "expo": "37.0.3",
-    "react": "16.9.0",
-    "react-dom": "16.9.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
-    "react-native-screens": "2.2.0",
-    "react-native-web": "0.11.7"
+    "@types/react": "16.9.35",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
   },
   "devDependencies": {
-    "@babel/core": "7.8.6",
-    "@types/react": "16.9.23",
-    "@types/react-native": "0.61.17",
-    "babel-preset-expo": "8.1.0",
-    "typescript": "3.8.3"
-  }
+    "@babel/preset-env": "7.9.6",
+    "@babel/register": "7.9.0",
+    "@types/jest": "25.2.2",
+    "autoprefixer": "9.7.6",
+    "babel-plugin-root-import": "6.5.0",
+    "css-loader": "3.5.3",
+    "del": "^5.1.0",
+    "doiuse": "4.2.0",
+    "expose-loader": "0.7.5",
+    "gh-pages": "2.2.0",
+    "gulp": "4.0.2",
+    "gulp-plumber": "1.2.1",
+    "html-webpack-plugin": "4.3.0",
+    "jest": "26.0.1",
+    "jest-cli": "26.0.1",
+    "jest-css-modules": "2.1.0",
+    "less-loader": "6.1.0",
+    "lesshint": "6.3.7",
+    "lesshint-webpack-plugin": "0.0.5",
+    "postcss-loader": "3.0.0",
+    "strip-sourcemap-loader": "0.0.1",
+    "style-loader": "1.2.1",
+    "ts-jest": "26.0.0",
+    "ts-loader": "7.0.4",
+    "tslint": "6.1.2",
+    "tslint-loader": "3.5.4",
+    "typescript": "3.9.2",
+    "url-loader": "4.1.0",
+    "webpack": "4.43.0",
+    "webpack-dev-server": "3.11.0",
+    "webpack-stream": "5.2.1"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/component/**/*.ts"
+    ],
+    "coverageDirectory": "<rootDir>/build/reports/coverage",
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "coverageReporters": [
+      "html",
+      "json-summary",
+      "lcov"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tests/mocks/file-mock.js",
+      "\\.(css|less)$": "<rootDir>/node_modules/jest-css-modules",
+      "~/(.*)": "<rootDir>/src/$1"
+    },
+    "notify": true,
+    "preset": "ts-jest",
+    "roots": [
+      "<rootDir>/tests/unit"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/tests/globals/jasmine.conf.js"
+    ],
+    "testRegex": "/.*-spec\\.(ts)$",
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "verbose": true
+  },
+  "types": "types.d.ts"
 }
