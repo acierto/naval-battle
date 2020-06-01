@@ -1,0 +1,3 @@
+include 'naval-battle-client'
+include 'naval-battle-server'
+rootProject.name = 'naval-battle'
