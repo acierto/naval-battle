@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styles from './board.less';
+import explosionImage from '../assets/explosion.jpg';
 
 const {useEffect, useRef} = React;
 
@@ -12,11 +13,14 @@ export const Board = () => {
     const columnNum = 20;
 
     const handleEvent = (event: MouseEvent, ctx: CanvasRenderingContext2D) => {
-        ctx.fillStyle = 'black';
+        const x = Math.floor(event.offsetX / cellSize) * cellSize;
+        const y = Math.floor(event.offsetY / cellSize) * cellSize;
 
-        ctx.fillRect(Math.floor(event.offsetX / cellSize) * cellSize,
-            Math.floor(event.offsetY / cellSize) * cellSize,
-            cellSize, cellSize);
+        if (x > 0 && y > 0) {
+            const image = new Image();
+            image.src = explosionImage;
+            ctx.drawImage(image, x + 10, y + 13);
+        }
     };
 
     useEffect(() => {
@@ -26,7 +30,7 @@ export const Board = () => {
             if (ctx) {
                 canvas.addEventListener('click', (event: MouseEvent) => handleEvent(event, ctx));
 
-                ctx.fillStyle = 'white';
+                ctx.fillStyle = '#006994';
                 ctx.strokeStyle = 'lightgrey';
                 for (let row = 0; row < rowNum; row++) {
                     for (let column = 0; column < columnNum; column++) {
@@ -39,7 +43,7 @@ export const Board = () => {
                 }
 
                 ctx.font = '28px Georgia';
-                ctx.fillStyle = 'black';
+                ctx.fillStyle = 'white';
 
                 for (let column = 1; column < columnNum; column++) {
                     const x = column * cellSize;
@@ -48,9 +52,8 @@ export const Board = () => {
 
                 for (let row = 1; row < rowNum; row++) {
                     const y = row * cellSize;
-                    ctx.fillText(row.toString(),  15, y + 35);
+                    ctx.fillText(row.toString(), row >= 10 ? 10: 15, y + 35);
                 }
-
             }
         }
     }, []);

@@ -27,6 +27,19 @@ export default {
         },
         {test: /\.css$/, use: ['style-loader', 'css-loader', postCssLoader]},
         {
+            test: /\.(jpe?g|png|gif|svg|ico)\??.*$/i,
+            use: [
+                'file-loader?hash=sha512&digest=hex&name=assets/[name]-[hash].[ext]',
+                {
+                    loader: 'image-webpack-loader?bypassOnDebug',
+                    options: {
+                        gifsicle: {interlaced: false},
+                        optipng: {optimizationLevel: 7}
+                    }
+                }
+            ]
+        },
+        {
             test: /\.less$/,
             use: ['style-loader',
                 {
